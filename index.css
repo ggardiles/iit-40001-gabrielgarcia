@@ -1,0 +1,23 @@
+.body {
+  min-height: 100%;
+  bottom: 0;
+  background-color: yellow;
+}
+.myheader {
+  background-color: white;
+}
+.mymain {
+  background-color: white;
+}
+.myfooter {
+  background-color: yellow;
+  font-size: 10px;
+}
+
+.myfooter .contactus{
+  text-align: left;
+}
+
+.myfooter .sitemap {
+  text-align: right;
+}
