@@ -5,6 +5,7 @@
 }
 .myheader {
   background-color: white;
+  overflow: auto;
 }
 .mymain {
   background-color: white;
