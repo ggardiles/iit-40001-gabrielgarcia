@@ -12,7 +12,7 @@ function isPosInt(n) {
  * @param {*First positive integer of the range} n1 
  * @param {*Last positive integer of the range} n2 
  */
-function fizzbuzz(n1, n2) {
+function fizzBuzz(n1, n2) {
   // Validation
   if (!isPosInt(n1)) {
     throw new Error('Left bound of range is not a positive integer: ' + n1);
