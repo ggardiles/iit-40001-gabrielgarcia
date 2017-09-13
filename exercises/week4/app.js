@@ -1,6 +1,9 @@
-$.getJSON('cards/aceOfSpades.json', function(card){
-  var $cardP = $("<p>");
-  $cardP.text(card.rank + " of " + card.suit);
-
-  $("body").append($cardP);
+$.getJSON('cards/aceOfSpades.json', function (cards) {
+  var $cardUl = $("<ul>");
+  cards.forEach(function (card) {
+    var $cardLi = $("<li>");
+    $cardLi.text(card.rank + " of " + card.suit);
+    $cardUl.append($cardLi);
+  }, this);
+  $("body").append($cardUl);
 });

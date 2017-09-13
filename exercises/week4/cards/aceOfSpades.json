@@ -1,4 +1,18 @@
-{
-  "rank": "ace",
-  "suit": "spade"
-}
+[
+  {
+    "suit": "spade",
+    "rank": 3
+  },
+  {
+    "suit": "hearts",
+    "rank": "ace"
+  },
+  {
+    "suit": "diamonds",
+    "rank": 10
+  },
+  {
+    "suit": "clubs",
+    "rank": 7
+  }
+]
