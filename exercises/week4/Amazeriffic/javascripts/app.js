@@ -1,10 +1,7 @@
-var main = function () {
-    var toDos = ["Get groceries",
-                 "Make up some new ToDos",
-                 "Prep for Monday's class",
-                 "Answer emails",
-                 "Take Gracie to the park",
-                 "Finish writing this book"];
+var main = function (toDoObjects) {
+    var toDos = toDoObjects.map(function (toDo) {
+        return toDo.description;
+    })
 
     $(".tabs a span").toArray().forEach(function (element) {
         var $element = $(element);
@@ -24,7 +21,7 @@ var main = function () {
                 // newest first, so we have to go through
                 // the array backwards
                 $content = $("<ul>");
-                for (i = toDos.length-1; i >= 0; i--) {
+                for (i = toDos.length - 1; i >= 0; i--) {
                     $content.append($("<li>").text(toDos[i]));
                 }
             } else if ($element.parent().is(":nth-child(2)")) {
@@ -34,9 +31,30 @@ var main = function () {
                     $content.append($("<li>").text(todo));
                 });
             } else if ($element.parent().is(":nth-child(3)")) {
+                var tags = [];
+
+                toDoObjects.forEach(function (toDo) {
+                    toDo.tags.forEach(function (tags) {
+                        if (tags.indexOf(tag) === -1) {
+                            tags.push(tag);
+                        }
+                    })
+                });
+                
+                var tagObjects = tags.map(function (toDo) {
+                    var toDosByTag = [];
+                    toDoObjects.forEach(function(toDo){
+                        if (toDo.tags.indexOf(tag !== -1)){
+                            toDosByTag.push(toDo.description);
+                        };
+                    });
+                    return {"name":tag, "toDos": toDosByTag}
+                });
+
+            } else if ($element.parent().is(":nth-child(4)")) {
                 // input a new to-do
                 $input = $("<input>"),
-                $button = $("<button>").text("+");
+                    $button = $("<button>").text("+");
 
                 $button.on("click", function () {
                     if ($input.val() !== "") {
@@ -46,8 +64,8 @@ var main = function () {
                 });
 
                 $content = $("<div>").append($input).append($button);
-               /* Alternatively append() allows multiple arguments so the above
-                can be done with $content = $("<div>").append($input, $button); */
+                /* Alternatively append() allows multiple arguments so the above
+                 can be done with $content = $("<div>").append($input, $button); */
             }
 
             $("main .content").append($content);
