@@ -49,7 +49,6 @@ app.get('/hands/:handId', function (req, res) {
       });
     })
     .catch(function (err) {
-      console.error(err);
       res.status(404).json({ error: 'Hand could not be found with id: ' + handId });
     });
 });
@@ -73,7 +72,6 @@ app.get('/hands/:handId/cards', function (req, res) {
       res.send(hand.cards);
     })
     .catch(function (err) {
-      console.error(err);
       res.status(404).json({ error: 'Cards could not be found for handId: ' + handId });
     });
 });
