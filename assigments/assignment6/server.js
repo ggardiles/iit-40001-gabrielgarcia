@@ -285,7 +285,11 @@ app.delete('/users/:userId/reminders', function (req, res) {
   }
 
   // Clear out reminders for user
-  users[userId].reminders = [];
+  //users[userId].reminders = [];
+  users[userId].reminders = users[userId].reminders.map(function(el) {
+    el.isDeleted = true;
+    return el;
+  });
 
   res.status(204).send();
 });
@@ -312,7 +316,7 @@ app.delete('/users/:userId/reminders/:reminderId', function (req, res) {
   // Check reminder is valid and not deleted
   if (reminderId < 1 || reminderId > reminders.length || reminders[reminderId - 1].isDeleted) {
     return res.status(404)
-      .json({ error: 'User ID: ' + userId + 'does not have Reminder ID: ' + reminderId });
+      .json({ error: 'User ID: ' + userId + ' does not have Reminder ID: ' + reminderId });
   }
 
   // Delete reminder from array of reminders of user
