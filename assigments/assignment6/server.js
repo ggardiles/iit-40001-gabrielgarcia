@@ -145,7 +145,6 @@ app.get('/users/:userId/reminders', function (req, res) {
 
   // Filter reminders and format response object
   var final_reminders = reminders.filter(function (el) {
-    console.log(el);
     if ('title' in req.query && req.query.title !== el.title) {
       return false;
     };
@@ -326,6 +325,6 @@ app.delete('/users/:userId/reminders/:reminderId', function (req, res) {
 /**
  *  SERVER INITIALIZATION
  */
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Gabriel Garcia Server on port 3000!');
 });
