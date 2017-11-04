@@ -1,0 +1,29 @@
+.userbank .card {
+    background-color: #2B2B2B;
+    /*border: 5px solid rgba(0,0,0,.225);*/
+    padding: 1rem;
+    border-radius: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.jumbotron {
+    background-color: transparent;
+}
+
+#addnewcard {
+    background-color: transparent;
+    border-color: transparent;
+}
+.btn-close{
+  text-shadow: none;
+  font-size: 2rem;
+  color: red;  
+}
+
+button.navbar-toggler{
+    color: white;
+}
+
+.modal-content {
+    color:black;
+}

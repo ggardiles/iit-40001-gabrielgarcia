@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div(class="landpage")
+    div(class="landpage-inner")
+      div(class="cover-container")
+        header(class="masthead clearfix")
+          div(class="inner")
+            h3(class="masthead-brand") UserBank
+            nav(class="nav nav-masthead")
+              a(class="nav-link active", href="/") Home
+              a(class="nav-link", href="/users") Users
+
+        main(role="main", class="inner cover")
+          h1(class="cover-heading") Manage your users.
+          p(class="lead") Try the platform of the future for user management.
+          p(class="lead")
+            a(href="/users", class="btn btn-lg btn-secondary") Show Users
+
+        footer(class="mastfoot")
+          div(class="inner")
+            p Created By 
+              a(href="https://github.com/ggardiles/iit-40001-gabrielgarcia") Gabriel Garcia

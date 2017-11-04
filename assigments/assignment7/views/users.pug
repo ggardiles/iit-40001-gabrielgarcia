@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-faded
+    a.navbar-brand(href='/') UserBank
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='/')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='/users') Users
+        li.nav-item
+          a.nav-link(href='#', onclick="openUserModal()") Create User
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='search', id="userIDSearch", placeholder='User ID', aria-label='Search')
+        button.btn.btn-outline-primary.my-2.my-sm-0(type='submit', onclick="searchUser(); return false;") Search
+
+  #global-alert
+
+  div(class="jumbotron jumbotron-fluid")
+    div(class="container")
+      h1(class="display-3") Users
+      p(class="lead") Here you can see a list of all current users.
+  
+  div(class="userbank")
+    div(class="container")
+
+      div(class="row")
+        each u in users
+          div(class="col")
+            div(class="card", style="width: 20rem;")
+              div(class="card-block")
+                a(class="close btn-close", href="#", aria-label="Close", onclick="deleteUser("+u.id+")")
+                  span(aria-hidden="true") &times;
+                h4(class="card-title")= u.name
+                p(class="card-text")= u.email
+                a(href="/users/" + u.id + "/reminders" , class="btn btn-primary") See User
+        div(class="col")
+          div(class="card", style="width: 20rem;")
+            div(class="card-block")
+              a(href="#", class="btn btn-info", role="button", id="addnewcard", onclick="openUserModal()")
+                img(src="/images/adduser.png", width="100px", height="auto")
+    
+  #userModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='userModalLabel', aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5#userModalLabel.modal-title Create User
+          button.close(type='button', data-dismiss='modal', aria-label='Close', onclick="closeUsersModal(); return false;")
+            span(aria-hidden='true') ×
+        .modal-body
+          #modal-alert
+          form#create-user-form(no-validate)
+            .form-group
+              label(for='inputName1') Name
+              input#inputName1.form-control(type='text', placeholder='Rafael Nadal', required)
+            .form-group
+              label(for='inputEmail1') Email
+              input#inputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='aa@aa.com', required)
+            .form-check
+            button.btn.btn-primary(type='submit') Submit
+        .modal-footer
+          button.btn.btn-secondary(type='button', data-dismiss='modal', onclick="closeUsersModal(); return false;") Done
+        
