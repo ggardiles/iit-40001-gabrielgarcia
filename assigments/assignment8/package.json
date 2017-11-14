@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "jest",
-    "e2e": "(node ./bin/www &) && node e2e.test.js"
+    "e2e": "(node ./bin/www &) && node e2e.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

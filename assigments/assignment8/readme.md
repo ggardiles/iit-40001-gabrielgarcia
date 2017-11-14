@@ -21,4 +21,12 @@ $ npm test
 ```sh
 $ npm run e2e
 ```
+Bare in mind that this command automatically starts the server in the background. Therefore it will be required to manually stop the node process after testing is over:
+
+```sh
+$ ps -u <user> | grep node
+$ kill -9 <node-pid>
+```
+
+This can be avoided by starting the server on a different terminal session beforehand.
 
